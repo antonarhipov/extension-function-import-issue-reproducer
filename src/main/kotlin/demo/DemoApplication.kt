@@ -42,7 +42,6 @@ class MessageService(val db: JdbcTemplate) {
 
     //FIXME: query function needs 'import org.springframework.jdbc.core.query' (see above)
     fun findMessageById(id: String): List<Message> = db.query("select * from messages where id = ?", id) { response, _ ->
-        println("tests".length)
         Message(response.getString("id"), response.getString("text"))
     }
 
