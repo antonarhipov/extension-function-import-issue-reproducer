@@ -1,11 +1,11 @@
-package me.anton.demo
+package demo
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.stereotype.Service
 import org.springframework.jdbc.core.JdbcTemplate
 import java.util.UUID
-import org.springframework.jdbc.core.query
+//import org.springframework.jdbc.core.query
 import org.springframework.web.bind.annotation.*
 
 
@@ -40,6 +40,7 @@ class MessageService(val db: JdbcTemplate) {
         Message(response.getString("id"), response.getString("text"))
     }
 
+    //FIXME: query function needs 'import org.springframework.jdbc.core.query' (see above)
     fun findMessageById(id: String): List<Message> = db.query("select * from messages where id = ?", id) { response, _ ->
         println("tests".length)
         Message(response.getString("id"), response.getString("text"))
